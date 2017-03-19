@@ -1,5 +1,7 @@
 pipeline {
+
     agent any
+    
     stages {
         stage('Build') {
             steps {
@@ -11,5 +13,11 @@ pipeline {
      	        sh './gradlew check'
      	    }
         }
+    }
+
+    post {
+         always {
+             archive 'build/libs/*.jar'           
+         }
     }
 }
