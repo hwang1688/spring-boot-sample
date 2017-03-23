@@ -13,7 +13,7 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 jar {
-    baseName = 'spring-boot'
+    baseName = 'spring-boot-sample'
     version = '0.0.1'
 }
 
@@ -30,4 +30,8 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-actuator"
     compile "org.springframework.boot:spring-boot-starter-actuator"
     testCompile "org.springframework.boot:spring-boot-starter-test"
+}
+
+springBoot {
+    executable = true
 }

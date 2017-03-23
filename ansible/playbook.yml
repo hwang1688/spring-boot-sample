@@ -1,0 +1,28 @@
+---
+- hosts: all
+  gather_facts: yes
+  tasks:
+  - name: shutdown spring-boot-sample service
+    systemd:
+      name: spring-boot-sample.service
+      state: stopped
+  - name: deploy spring-boot-sample file
+    copy:
+      src: ../build/libs/spring-boot-sample-0.0.1.jar
+      dest: /home/sbadmin/spring-boot-sample-0.0.1.jar
+      owner: sbadmin
+      group: sbadmin
+      mode: 0755
+  - name: deploy spring-boot-sample.service file
+    copy:
+      src: files/spring-boot-sample.service
+      dest: /etc/systemd/system/spring-boot-sample.service
+      owner: root
+      group: root
+      mode: 0664
+  - name: reload spring-boot-sample.service
+    systemd:
+      daemon_reload: yes
+      name: spring-boot-sample.service
+      enabled: yes
+      state: started

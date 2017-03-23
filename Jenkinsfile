@@ -13,6 +13,11 @@ pipeline {
      	        sh './gradlew check'
      	    }
         }
+        stage('Deploy') {
+            steps {
+
+            }
+        }
     }
 
     post {
